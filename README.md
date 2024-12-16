@@ -50,25 +50,34 @@ Developed by: B Harshala Reddy
 RegisterNumber: 24009746
 */
 ```
-module exp4a (df,bo,a,b,bin);
-output df;
-output bo;
-input a;
-input b;
-input bin;
-wire w1,w2,w3;
-assign w1=a^b;
-assign w2=(~a&b);
-assign w3=(~w1&bin);
-assign df=w1^bin;
-assign bo=w2|w3;
-endmodule 
+module exp4(a,b,cin,sum,carry);
+input a,b,cin;
+output sum,carry;
+assign sum=((a^b)^cin);
+assign carry=((a&b)|(cin&(a^b)));
+endmodule
 ```
+```
+module exp4a(a,b,bin,difference,borrow);
+input a,b,bin;
+output difference,borrow;
+assign difference=((a^b)^bin);
+assign borrow=((~a&b)|(bin&(~(a^b))));
+endmodule
+```
+
 **RTL Schematic**
-![Screenshot 2024-11-20 140028](https://github.com/user-attachments/assets/6c311b3e-2b02-487c-a4eb-934c738e3520)
+
+![exp4  add logicgate](https://github.com/user-attachments/assets/56f1a0cd-66a8-47e2-9292-e25ce955df16)
+
+![exp4 sub waveform](https://github.com/user-attachments/assets/1f182fb4-aab5-4ea0-9120-57dc06c1c8a1)
 
 **Output Timing Waveform**
-![Screenshot 2024-11-20 140258](https://github.com/user-attachments/assets/c150302f-e639-4178-9cd0-2d36d61a55e8)
+
+![exp4 add waveform](https://github.com/user-attachments/assets/c236c398-ea9c-40cf-b9bd-a9a1a85241c8)
+
+![exp4 sub waveform](https://github.com/user-attachments/assets/2e9b2bf1-cecf-4174-adbc-4211dcc14b74)
+
 
 **Result:**
 
